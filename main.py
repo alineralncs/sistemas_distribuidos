@@ -43,20 +43,16 @@ def menu(option):
                 print("Tempo decorrido:", elapsed_time, "segundos")
 
         elif option == "3":
-            if n == 0:
-                print("Divisão por zero")
-            elif n < 0:
-                print("Intervalo inválido")
-            else:
-                size = comm.Get_size()
-                start_time = time.time()
-                resultado = metodo_butterfly(x0, xn, n, comm, rank, size)
-                end_time = time.time()
+          
+            size = comm.Get_size()
+            start_time = time.time()
+            resultado = metodo_butterfly(x0, xn, n, comm, rank, size)
+            end_time = time.time()
 
-                print("Calculando integral usando a regra do trapézio butterfly...")
-                print(f'Resultado da integral da função: {resultado}')
-                elapsed_time = end_time - start_time
-                print("Tempo decorrido trapézio butterfly:", elapsed_time, "segundos")
+            print("Calculando integral usando a regra do trapézio butterfly...")
+            print(f'Resultado da integral da função: {resultado}')
+            elapsed_time = end_time - start_time
+            print("Tempo decorrido trapézio butterfly:", elapsed_time, "segundos")
 
         elif option == "4":
             print("Encerrando o programa...")
