@@ -57,7 +57,7 @@
 
 ![Untitled](imagens/Untitled%209.png)
 
-### 12 processos
+### 16 processos
 
 ![Untitled](imagens/Untitled%2010.png)
 
@@ -68,4 +68,4 @@
 
 </aside>
 
-Dado os resultados, é possível perceber que o método butterfly é bem mais rápido, especialmente utilizando 12 processos.
+Dado os resultados, é possível perceber que o método butterfly é bem mais rápido, especialmente utilizando uma maior quantidade de processos.
