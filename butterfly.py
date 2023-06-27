@@ -30,7 +30,7 @@ def metodo_butterfly(x0, xn, n, comm, rank, size):
             local_sum += funcao(local_x)
             local_x += local_h
 
-        while rank < size and size > 1:
+        while size > 1:
             size //= 2
             result = local_sum
 
