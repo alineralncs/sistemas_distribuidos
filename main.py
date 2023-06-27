@@ -70,6 +70,8 @@ if __name__ == "__main__":
     xn = 1000000
     n = 10000000
 
+
+
     if len(sys.argv) > 1:
         option = sys.argv[1]
         menu(option)

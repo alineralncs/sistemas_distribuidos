@@ -34,11 +34,23 @@ def metodo_butterfly(x0, xn, n, comm, rank, size):
             size //= 2
             result = local_sum
 
-            if rank >= size:
-                comm.send(result, dest=rank - size)
-            else:
-                result = comm.recv(source=rank + size)
+            partner = rank + size
+            print('partner', partner)
+            if rank < size:
+                print('rank', rank)
+                result = comm.recv(source=partner)
                 local_sum += result
+                print('result',local_sum)
+                # - A cada passo calcula-se a metade do numero de processadores atuais.
+                # - Neste passo, os elementos com id menor que a metade recebem os valores dos elementos
+                # com id maior ou igual a metade (id recebe de id+metade)
+                # - Atualiza o número de processadores atuais para o valor da metade.
+                # - Para quando o valor da metade for 1.
+            else:
+                print('rank else', rank)
+                print('size else', size)
+                comm.send(result, dest=rank - size)
+             
         if rank == 0:
             final_result = local_h * ((funcao(x0) + funcao(xn)) / 2 + local_sum)
             return final_result
