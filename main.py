@@ -8,11 +8,11 @@ from butterfly import metodo_butterfly
 
 def menu(option):
     while True:
-        print("Selecione o método para calcular a integral:")
-        print("1. Trapézio Sequencial")
-        print("2. Trapézio Mestre e Escravos")
-        print("3. Trapézio Butterfly")
-        print("4. Sair")
+        # print("Selecione o método para calcular a integral:")
+        # print("1. Trapézio Sequencial")
+        # print("2. Trapézio Mestre e Escravos")
+        # print("3. Trapézio Butterfly")
+        # print("4. Sair")
 
         if option == "1":
             start_time = time.time()
@@ -23,9 +23,8 @@ def menu(option):
             elapsed_time = end_time - start_time
             print("Tempo decorrido trapézio sequencial:", elapsed_time, "segundos")
 
-        elif option == "2":
-            size = 1  # Set the appropriate value for size
-            if size == 1:
+        elif option == "2": 
+            if size == 1 and rank == 0:
                 start_time = time.time()
                 print("Calculando integral usando a regra do trapézio com o mestre...")
                 resultado = mestre(x0, xn, n, comm, rank, size)
@@ -43,8 +42,7 @@ def menu(option):
                 print("Tempo decorrido:", elapsed_time, "segundos")
 
         elif option == "3":
-          
-            size = comm.Get_size()
+
             start_time = time.time()
             resultado = metodo_butterfly(x0, xn, n, comm, rank, size)
             end_time = time.time()
@@ -66,8 +64,8 @@ if __name__ == "__main__":
     comm = MPI.COMM_WORLD
     rank = comm.Get_rank()
     size = comm.Get_size()
-
-    # Define os limites da integral e o número de trapézios
+    print('size', size)
+        # Define os limites da integral e o número de trapézios
     x0 = 0
     xn = 1000000
     n = 10000000

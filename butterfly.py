@@ -13,14 +13,18 @@ def metodo_butterfly(x0, xn, n, comm, rank, size):
     else:
         if rank == 0:
             num = comm.bcast(n, root=0)
-        
-        num = comm.bcast(None, root=0)
+        else:
+            num = comm.bcast(None, root=0)
 
         
         local_n = num // size
         local_h = (xn - x0) / num
         local_sum = 0.0
         local_x = x0 + local_h * rank * local_n
+       # Nessa função, cada processo calcula uma soma local 
+       # parcial da função nos seus subintervalos específicos,
+       #  e essas somas locais são combinadas e atualizadas em cada 
+       # iteração do loop de redução.
 
         for i in range(1, local_n):
             local_sum += funcao(local_x)
